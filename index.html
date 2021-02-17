@@ -120,19 +120,28 @@
 
     <div class="modal-overlay active">
         <div class="modal">
-            <div class="modal-content">
-                <div class="form">
-                    <h2>Nova Transação</h2>
+            <div id="form">
+
+                <h2>Nova Transação</h2>
                     <!-- FORMULARIO inicio -->
                     <form action="">
                         <div class="input-group">
-                            <label for=""></label>
-                            <input type="text" id="description" name="description"/>
+                            <label class="sr-only" for="description"></label>
+                            <input type="text" id="description" name="description" placeholder="Descrição"/>
+                        </div>
+
+
+                        <div class="input-group">
+                            <label class="sr-only" for="description"></label>
+                            <input type="text" id="description" name="description" placeholder="Descrição"/>
                         </div>
                     </form>
                     <!-- FORMULARIO fim -->
-                </div>
+
+                
             </div>
+            
+               
         </div>
     </div>
 
