@@ -15,6 +15,8 @@ const Modal = {
             .classList.remove("active");
 
     },
+
+    
 };
 
 const Utils = {
@@ -23,7 +25,6 @@ const Utils = {
         value = String(value).replace(/\D/g, "");
         value = Number(value) / 100;
         value = value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
-
         return signal + value;
     }
 };
@@ -37,15 +38,43 @@ const transactions = [
 ];
 
 const Transaction = {
+
+    all: transactions,
+
+    add(transaction){
+        Transaction.all.push(transaction);
+    },
+
+
     incomes() {
+        let income = 0;
+
+        Transaction.all.forEach((transaction) => {
+            if(transaction.amount > 0){
+                income += transaction.amount;
+            }
+        });
+        return income;
 
     },//soma das entradas
 
     expenses() {
 
+        let expense = 0;
+
+        Transaction.all.forEach((transaction) =>{
+            if(transaction.amount < 0){
+                expense += transaction.amount;
+            }
+        });
+
+        return expense;
+
     },//somar as saidas
 
     total() {
+
+        return Transaction.incomes() + Transaction.expenses();
 
     }
     //entradas - saidas
@@ -76,9 +105,18 @@ const DOM = {
         
         `
         return html;
-    }
+    },
+
+
+    updateBalance(){
+        document.getElementById('incomeDisplay').innerHTML = Utils.formatCurrency(Transaction.incomes()) ;
+        document.getElementById('expenseDisplay').innerHTML = Utils.formatCurrency( Transaction.expenses());
+        document.getElementById('totalDisplay').innerHTML = Utils.formatCurrency(Transaction.total()) ;
+    },
 }
 
 transactions.forEach(function (transaction) {
     DOM.addTransaction(transaction);
 });
+
+DOM.updateBalance()
