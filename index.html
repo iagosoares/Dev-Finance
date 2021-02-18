@@ -30,20 +30,20 @@
             <h2 class="sr-only">Balanço</h2>
 
             <div class="card">
-                <h3> 
+                <h3>
                     <span>Entradas</span>
-                    <img src="./assets/income.svg" alt="Imagem de Entradas"/>
-                
+                    <img src="./assets/income.svg" alt="Imagem de Entradas" />
+
                 </h3>
                 <p>R$ 5.000,00</p>
 
             </div>
 
             <div class="card">
-                <h3> 
+                <h3>
                     <span>Saídas</span>
-                    <img src="./assets/expense.svg" alt="Imagem de saidas"/>
-                
+                    <img src="./assets/expense.svg" alt="Imagem de saidas" />
+
                 </h3>
                 <p>R$ 2.000,00</p>
 
@@ -70,7 +70,7 @@
 
             <h2 class="sr-only">Transações</h2>
 
-            <a href="#" class="button new"> + Nova Transação</a>
+            <a href="#" onclick="Modal.open()" class="button new"> + Nova Transação</a>
 
             <table id="data-table">
                 <thead>
@@ -118,39 +118,99 @@
 
     </main>
 
-    <div class="modal-overlay active">
+    <div class="modal-overlay ">
         <div class="modal">
             <div id="form">
-
                 <h2>Nova Transação</h2>
-                    <!-- FORMULARIO inicio -->
-                    <form action="">
-                        <div class="input-group">
-                            <label class="sr-only" for="description"></label>
-                            <input type="text" id="description" name="description" placeholder="Descrição"/>
-                        </div>
-
-
-                        <div class="input-group">
-                            <label class="sr-only" for="description"></label>
-                            <input type="text" id="description" name="description" placeholder="Descrição"/>
-                        </div>
-                    </form>
-                    <!-- FORMULARIO fim -->
-
                 
+                <form action="">
+
+
+                    <div class="input-group">
+
+                        <label class="sr-only" for="description">Descrição</label>
+
+                        <input type="text"
+                            id="description"
+                            name="description"
+                            placeholder="Descrição" />
+                    </div>
+
+                    <!-- ################################################## -->
+
+                    <div class="input-group">
+
+                        <label class="sr-only" for="amount">Valor</label>
+
+                        <input 
+                            type="number"
+                             id="amount" 
+                             step="0.01" 
+                             name="amount" 
+                             placeholder="0,00" />
+
+                        <small class="help">
+                            Use o sinal - (negativo) para despesas e, (virgula) para casas decimais
+                        </small>
+                    </div>
+
+                    <!-- ################################################## -->
+
+
+                    <div class="input-group">
+
+                        <label class="sr-only" for="date">Data</label>
+
+                        <input 
+                            type="date"
+                            id="date"
+                            name="date"
+                            placeholder="Data" />
+
+                    </div>
+
+                    <!-- ################################################## -->
+
+                    <div class="input-group actions">
+
+                        <a href="#"  class="button cancel">Cancelar</a>
+                        <button>Salvar</button>
+
+                    </div>
+
+
+                </form>
+                <!-- FORMULARIO fim -->
             </div>
-            
-               
+
         </div>
     </div>
-
-
 
     <footer>
         <p>dev.Finance$</p>
     </footer>
 
+
+    <script>
+        Modal = {
+            open() {
+                
+                document
+                .querySelector(".modal-overlay")
+                .classList.add("active");
+
+
+            },
+
+            close() {
+
+                document
+                .querySelector(".modal-overlay")
+                .classList.remove("active");
+
+            },
+        }
+    </script>
 
 </body>
 
