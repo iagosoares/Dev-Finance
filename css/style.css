@@ -57,10 +57,9 @@ html{
     font-size: 93.75%;
 }
 
-.button.new{
-    display: inline-block;
-    margin-bottom: .8rem;
-}
+
+
+/* LINKS & BUTTONS ================================= */
 
 a{
     color:#336820;    
@@ -71,6 +70,57 @@ a:hover{
     color: #3dd705;
 
 }
+
+button{
+    width: 100%;
+    height: 50px;
+    border: none;
+    background-color: var(--green);
+    color: white;
+    padding: 0;
+    border-radius: 0.10rem;    
+    cursor: pointer;
+
+}
+
+button:hover{
+    background-color: #2f8211;
+    text-transform: uppercase;
+    border-radius: 0.5rem;
+}
+
+.button.new{
+    display: inline-block;
+    margin-bottom: .8rem;
+}
+
+.button.cancel{
+
+    color: #e92929;
+    border-radius:0.10rem;
+    height:50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e92929 ;
+    opacity: 0.6;
+
+}
+
+.button.cancel:hover{
+    border: 2.5px solid #e92929;
+    border-radius: 0.5rem;
+    opacity: 1;
+    font-weight: bold;
+    text-transform: uppercase;
+
+}
+
+
+
+
+
+
 
 #balance{
     margin-top: -5rem;
@@ -119,6 +169,8 @@ a:hover{
     width: 100%;
     overflow-x: auto;
 }
+
+/* TABELA ================================= */
 
 #data-table{
     
@@ -177,8 +229,10 @@ td.expense{
     color: #e92929;
 }
 
-/* MODAL */
 
+
+
+/* MODAL ================================= */
 .modal-overlay{
     width: 100%;
     height: 100%;
@@ -190,6 +244,7 @@ td.expense{
     justify-content: center;
     opacity: 0;
     visibility: hidden;
+    z-index: 10;
 }
 .modal-overlay.active{
     opacity: 1;
@@ -199,15 +254,22 @@ td.expense{
 .modal{
     background-color:#F0F2F5;
     padding: 2.4rem;
-    width: 90%;
-    max-width:500px;
-    
+    position: relative;
+    z-index: 1;   
 
+}
+
+/* Form ================================= */
+
+#form{
+    max-width: 500px;
 }
 
 #form h2{
     margin-top: 0;
 }
+
+/* INPUT ================================= */
 
 input{
     border: none;
@@ -231,43 +293,18 @@ input{
 
 }
 
-.input-group.actions .button, .input-group.actions button{
+.input-group.actions .button,
+.input-group.actions button{
     width: 48%;
 }
 
-button{
-    width: 100%;
-    height: 50px;
-    border: none;
-    background-color: var(--green);
-    color: white;
-    padding: 0;
-    border-radius: 0.10rem;
-    cursor: pointer;
 
-}
 
-button:hover{
-    background-color: #49aa26;
-}
 
-.button.cancel{
-    color: #e92929;
-    border-radius:0.10rem;
-    height:50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #e92929 ;
-    opacity: 0.6;
 
-}
 
-.button.cancel:hover{
-    border: 2px dashed #e92929;
-    opacity: 1;
 
-}
+
 
 footer{
     text-align: center;
@@ -276,9 +313,7 @@ footer{
     opacity: 0.6;
 }
 
-#form{
-    max-width: 500px;
-}
+
 
 
 /* Responsive */
