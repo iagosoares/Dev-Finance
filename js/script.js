@@ -16,7 +16,7 @@ const Modal = {
 
     },
 
-    
+
 };
 
 const Utils = {
@@ -27,6 +27,29 @@ const Utils = {
         value = value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
         return signal + value;
     }
+};
+
+const App = {
+    init() {
+
+        Transaction.all.forEach((transaction) => {
+            DOM.addTransaction(transaction);
+        });
+
+        DOM.updateBalance()
+
+
+        
+
+
+
+
+    },
+
+    reload() { 
+        DOM.clearTransactions()
+        App.init()
+    },
 };
 
 //Array de transações
@@ -41,8 +64,9 @@ const Transaction = {
 
     all: transactions,
 
-    add(transaction){
+    add(transaction) {
         Transaction.all.push(transaction);
+        App.reload()
     },
 
 
@@ -50,7 +74,7 @@ const Transaction = {
         let income = 0;
 
         Transaction.all.forEach((transaction) => {
-            if(transaction.amount > 0){
+            if (transaction.amount > 0) {
                 income += transaction.amount;
             }
         });
@@ -62,8 +86,8 @@ const Transaction = {
 
         let expense = 0;
 
-        Transaction.all.forEach((transaction) =>{
-            if(transaction.amount < 0){
+        Transaction.all.forEach((transaction) => {
+            if (transaction.amount < 0) {
                 expense += transaction.amount;
             }
         });
@@ -108,15 +132,25 @@ const DOM = {
     },
 
 
-    updateBalance(){
-        document.getElementById('incomeDisplay').innerHTML = Utils.formatCurrency(Transaction.incomes()) ;
-        document.getElementById('expenseDisplay').innerHTML = Utils.formatCurrency( Transaction.expenses());
-        document.getElementById('totalDisplay').innerHTML = Utils.formatCurrency(Transaction.total()) ;
+    updateBalance() {
+        document.getElementById('incomeDisplay').innerHTML = Utils.formatCurrency(Transaction.incomes());
+        document.getElementById('expenseDisplay').innerHTML = Utils.formatCurrency(Transaction.expenses());
+        document.getElementById('totalDisplay').innerHTML = Utils.formatCurrency(Transaction.total());
     },
+
+    clearTransactions() {
+        DOM.transactionsContainer.innerHTML = '';
+    }
 }
 
-transactions.forEach(function (transaction) {
-    DOM.addTransaction(transaction);
-});
+App.init()
 
-DOM.updateBalance()
+Transaction.add({
+    id: 39,
+    description: 'ALO',
+    amount: 200,
+    date: '23/01/2020',
+
+
+})
+
